@@ -14,11 +14,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+// TODO: API ROUTES
+app.use("/api", apiRoutes);
+
 // html routes
 app.use("/", htmlRoutes);
 
-// TODO: API ROUTES
-app.use("/api", apiRoutes);
+
 
 
 // listen on port

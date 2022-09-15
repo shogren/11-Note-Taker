@@ -5,19 +5,29 @@ const path = require('path');
 // TODO: respond with all notes from db.json
 router.get("/notes", function(req, res) {    
     console.log("GET WORKS!");
-    // return Promise.resolve(res.sendFile("./db/db.json"));
-    // fs.readFile("./db/db.json", "utf8", function(err, data) {
-    //     if (err) {
-    //         console.log(err);
-    //     }
+    fs.readFile("./db/db.json", "utf8", function(err, data) {
+        if (err) {
+            console.log(err);
+        }
     //     // console.log("from GET: " + data);
-    //     let notes = JSON.parse(data);
+        let notes = JSON.parse(data);
     //     // res.json(notes);
-    //     res.json(notes);
+        // res.json(notes);
+        return Promise.resolve(res.json(notes));
+
         
     //     // res.status(200).json(data);
     
-    // })
+    })
+
+    // const response = {
+    //     status: 'success',
+    //     body: notes,
+    //   };
+  
+    //   console.log(response);
+    //   res.status(201).json(response);
+  
 });
 
 // TODO: POST a new note on save
