@@ -2,35 +2,21 @@ const express = require('express');
 const PORT = 3001;
 const db = require('./db/db.json');
 const app = express();
-const path = require('path');
-const fs = require('fs');
-const router = require('express').Router();
-let { notesArray } = require('./db/db.json');
 
 const apiRoutes = require("./routes/apiRoutes");
 const htmlRoutes = require("./routes/htmlRoutes");
 
-// TODO: MIDDLEWARE
+// middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
-// TODO: HTML ROUTES
-// handles /notes
-app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, '/public/notes.html')));
-// handles everything else
-app.get('*', (req, res) => res.sendFile(path.join(__dirname, '/public/index.html')));
+// html routes
+app.use("/", htmlRoutes);
 
 // TODO: API ROUTES
+app.use("/api", apiRoutes);
 
-
-
-
-
-
-// used in getNotes()
-app.get('api/notes', (req, res) => {
-    res.json(db);
-  });
 
 // listen on port
 app.listen(PORT, () => {
