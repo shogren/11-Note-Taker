@@ -6,7 +6,7 @@ const fs = require('fs');
 var path = require("path");
 
 
-const apiRoutes = require("./routes/apiRoutes/apiRoutes.js");
+const apiRoutes = require("./routes/apiRoutes.js");
 const htmlRoutes = require("./routes/htmlRoutes.js");
 
 // middleware
