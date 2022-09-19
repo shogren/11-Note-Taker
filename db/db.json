@@ -1,22 +1,11 @@
 [
   {
-    "title": "Test Title",
-    "text": "Test text"
+    "title": "Test",
+    "text": "Test",
+    "id": "e1356850-0f0c-11eb-86a6-0b297e79cf71"
   },
   {
-    "title": "Title Number 2",
-    "text": "Text number 2"
-  },
-  {
-    "title": "sdf",
-    "text": "asdf"
-  },
-  {
-    "title": "asdf",
-    "text": "asdf"
-  },
-  {
-    "title": "asdf",
-    "text": "asdf"
+    "title": "Testing",
+    "text": "its a note!"
   }
 ]

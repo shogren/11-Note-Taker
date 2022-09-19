@@ -16,7 +16,6 @@ app.use(express.static("public"));
 
 // TODO: API ROUTES
 app.use("/api", apiRoutes);
-
 // html routes
 app.use("/", htmlRoutes);
 

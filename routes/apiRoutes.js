@@ -3,21 +3,15 @@ const fs = require('fs');
 const path = require('path');
 
 // TODO: respond with all notes from db.json
-router.get("/notes", function(req, res) {    
-    console.log("GET WORKS!");
+router.get("/notes", function(req, res) {   
+     
     fs.readFile("./db/db.json", "utf8", function(err, data) {
         if (err) {
             console.log(err);
         }
-    //     // console.log("from GET: " + data);
         let notes = JSON.parse(data);
-    //     // res.json(notes);
-        // res.json(notes);
-        return Promise.resolve(res.json(notes));
-
-        
-    //     // res.status(200).json(data);
-    
+        res.json(notes);
+        console.log("GET" , notes);
     })
 
     // const response = {
@@ -44,7 +38,7 @@ router.post("/notes", function(req, res) {
         };
         note.push(newNote);
         res.json(newNote);
-        fs.writeFile("./db/db.json", JSON.stringify(note, null, 2), function(err) {
+        fs.writeFile("./db/db.json", JSON.stringify(note, null, "  "), function(err) {
             if (err) throw err;
         });
     });
