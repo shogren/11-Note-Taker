@@ -1,8 +1,7 @@
 const router = require("express").Router();
 const fs = require('fs');
-const path = require('path');
 
-// TODO: respond with all notes from db.json
+// GET responds with all notes from db.json
 router.get("/notes", function(req, res) {   
      
     fs.readFile("./db/db.json", "utf8", function(err, data) {
@@ -11,20 +10,12 @@ router.get("/notes", function(req, res) {
         }
         let notes = JSON.parse(data);
         res.json(notes);
-        console.log("GET" , notes);
     })
 
-    // const response = {
-    //     status: 'success',
-    //     body: notes,
-    //   };
-  
-    //   console.log(response);
-    //   res.status(201).json(response);
-  
+    res.status(201);
 });
 
-// TODO: POST a new note on save
+// POST a new note on save
 router.post("/notes", function(req, res) {
     fs.readFile("./db/db.json", "utf8", function(err, data) {
         if (err) {
@@ -32,17 +23,35 @@ router.post("/notes", function(req, res) {
         }
         const note = JSON.parse(data);
         const noteData = req.body;
+
         const newNote = {
             title: noteData.title,
-            text: noteData.text
+            text: noteData.text,
+            id: Date.now()
         };
+
         note.push(newNote);
         res.json(newNote);
         fs.writeFile("./db/db.json", JSON.stringify(note, null, "  "), function(err) {
             if (err) throw err;
         });
     });
-    console.log("POST!")
+    
+    res.status(201);
 });
+
+// DELETE the note when passing an id
+router.delete("/notes/:id", (req, res) => {
+    let noteData = fs.readFileSync('./db/db.json');
+    let notes = JSON.parse(noteData);
+
+    const newNotes = notes.filter(note => note.id !== parseInt(req.params.id));
+
+   fs.writeFile("./db/db.json", JSON.stringify(newNotes, null, "  "), function(err) {
+    if (err) throw err;
+     
+    res.json(newNotes)   
+   }); 
+ });
 
 module.exports = router;

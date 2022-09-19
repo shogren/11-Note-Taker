@@ -1,11 +1,12 @@
 [
   {
-    "title": "Test",
-    "text": "Test",
-    "id": "e1356850-0f0c-11eb-86a6-0b297e79cf71"
+    "title": "Notes App",
+    "text": "You can use this web app to create, save, and delete notes!",
+    "id": 1663586205183
   },
   {
-    "title": "Testing",
-    "text": "its a note!"
+    "title": "How to use:",
+    "text": "Click the \"plus\" icon above to start a new note. After typing up the note, click the \"save\" icon next to the \"plus\" in order to save it. If you want to delete a note, click on the red \"trash can\" icon next to the note.",
+    "id": 1663586296243
   }
 ]
